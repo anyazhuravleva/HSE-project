@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+    <form method = "POST" action="/download" enctype="multipart/form-data">
+        <center>
+            {{ type }}
+            {% csrf_token %}
+            <input type="submit" value="Download">
+        </center>
+    </form>
+</body>
+</html>

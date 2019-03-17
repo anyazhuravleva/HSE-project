@@ -5,7 +5,9 @@
     <title>Home</title>
 </head>
 <body>
-    <form method = "POST" action="/submit/">
+    <h1 align="center" style="color: Blue">Определение точной геопозиции:</h1>
+    <h3> {{ user.email }}</h3>
+    <form method = "POST" action="/submit" enctype="multipart/form-data">
         <center>
             {{ type }}
             {% csrf_token %}
@@ -13,5 +15,26 @@
 
         </center>
     </form>
+
+    <a href="/logout" > Logout</a>
+    <h4 align="center">Your history:</h4>
+    <table border="1" align="center">
+    <tr>
+        <td style="background-color:#ffffcc">id</td>
+        <td style="background-color:#ffffcc">File</td>
+        <td style="background-color:#ffffcc">Antenna</td>
+        <td style="background-color:#ffffcc">Result</td>
+        <td style="background-color:#ffffcc">Date</td>
+    </tr>
+    {% for i in people %}
+                    <tr class='success'>
+                        <td>{{ i.id }}</td>
+                        <td><a href="{{ i.file.url}}">{{ i.file }}</a></td>
+                        <td>{{ i.antenna}}</td>
+                        <td></td>
+                        <td>{{ i.date }}</td>
+                    </tr>
+                        {% endfor %}
+    </table>
 </body>
 </html>
